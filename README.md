@@ -36,4 +36,9 @@ At the end of day 22, part 3 of the project, there is a challenge to create. The
 For the challenge #2, I decided to show the result above the flags, under the title of the app. 
 The experience is really great. 
 </p>
+
+<p> On Day 24, the challenge is to come back to this project 2 to add a set of modifiers to display the Flag Images. 
+  https://www.hackingwithswift.com/books/ios-swiftui/views-and-modifiers-wrap-up 
+</p>
+
 <footer> App icon is designed in https://www.canva.com/ and created in https://appicon.co/ </footer> 
