@@ -8,6 +8,29 @@
 
 import SwiftUI
 
+struct TextStyle: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .foregroundColor(.black)
+    }
+}
+
+struct FlagButton: View {
+    
+    var position: Int
+    var countries: Array<String>
+    
+    var body: some View {
+        Image(self.countries[position])
+        .renderingMode(.original)
+        .clipShape(Capsule())
+        .overlay(Capsule().stroke(Color.black, lineWidth: 2))
+        .shadow(color: .black, radius: 2)
+    }
+}
+
 struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     
@@ -23,16 +46,11 @@ struct ContentView: View {
             LinearGradient(gradient: Gradient(colors: [.green, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             VStack(spacing: 30) {
                 VStack {
-                    Text("Tap the flag of")
-                        .foregroundColor(.black)
+                    TextStyle(text: "Tap the Flag of")
                         .font(.largeTitle)
-                        .fontWeight(.black)
-                    Text(countries[correctAnswer])
-                        .foregroundColor(.black)
+                    TextStyle(text: "\"\(countries[correctAnswer])\"")
                         .font(.title)
-                        .fontWeight(.black)
-                    Text("Your current score is \(scores)...")
-                        .foregroundColor(.black)
+                    TextStyle(text: "Your current score is \(scores).")
                         .font(.headline)
                 }
                 
@@ -40,11 +58,7 @@ struct ContentView: View {
                     Button(action: {
                         self.flagTapped(number)
                     }) {
-                        Image(self.countries[number])
-                            .renderingMode(.original)
-                            .clipShape(Capsule())
-                            .overlay(Capsule().stroke(Color.black, lineWidth: 2))
-                            .shadow(color: .black, radius: 2)
+                        FlagButton(position: number, countries: self.countries)
                     }
                     Spacer()
                 }

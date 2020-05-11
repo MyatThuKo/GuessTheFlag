@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E24ED08D2465DB8B00503939"
-               BuildableName = "GuessTheFlag.app"
+               BuildableName = "Guess The Flag.app"
                BlueprintName = "GuessTheFlag"
                ReferencedContainer = "container:GuessTheFlag.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E24ED08D2465DB8B00503939"
-            BuildableName = "GuessTheFlag.app"
+            BuildableName = "Guess The Flag.app"
             BlueprintName = "GuessTheFlag"
             ReferencedContainer = "container:GuessTheFlag.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E24ED08D2465DB8B00503939"
-            BuildableName = "GuessTheFlag.app"
+            BuildableName = "Guess The Flag.app"
             BlueprintName = "GuessTheFlag"
             ReferencedContainer = "container:GuessTheFlag.xcodeproj">
          </BuildableReference>
