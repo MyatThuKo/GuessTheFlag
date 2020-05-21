@@ -31,6 +31,18 @@ struct FlagButton: View {
     }
 }
 
+struct Shake: GeometryEffect {
+    var amount: CGFloat = 10
+    var shakesPerUnit = 3
+    var animatableData: CGFloat
+
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        ProjectionTransform(CGAffineTransform(translationX:
+            amount * sin(animatableData * .pi * CGFloat(shakesPerUnit)),
+            y: 0))
+    }
+}
+
 struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     
@@ -40,6 +52,11 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     
     @State private var scores = 0
+
+    @State private var dimImage = false
+    @State private var wrongAnswer = false
+    @State private var wrongAttempt = 0.0
+    @State private var animationAmount = 0.0
     
     var body: some View {
         ZStack {
@@ -60,6 +77,9 @@ struct ContentView: View {
                     }) {
                         FlagButton(position: number, countries: self.countries)
                     }
+                    .rotation3DEffect(.degrees(number == self.correctAnswer ? self.animationAmount : 0), axis: (x: 0, y: 1, z: 0))
+                    .opacity(self.showingScore && number != self.correctAnswer && self.dimImage ? 0.25 : 1.0)
+                    .modifier(Shake(animatableData: CGFloat(self.wrongAttempt)))
                     Spacer()
                 }
             }
@@ -73,15 +93,25 @@ struct ContentView: View {
     
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
+            dimImage = true
             scoreTitle = "Correct, that is \(countries[number]) 🎉"
             scores += 1
+            withAnimation {
+                self.animationAmount += 360
+            }
         } else {
+            dimImage = false
+            wrongAnswer = true
             scoreTitle = "Incorrect, that is \(countries[number]) 😟"
+            
             //Condition not to allow scores below zero
             if scores == 0 {
                 scores = 0
             } else {
                 scores -= 1
+            }
+            withAnimation(.default) {
+                self.wrongAttempt += 1
             }
         }
         showingScore = true
