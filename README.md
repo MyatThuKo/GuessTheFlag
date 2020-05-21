@@ -41,4 +41,15 @@ The experience is really great.
   https://www.hackingwithswift.com/books/ios-swiftui/views-and-modifiers-wrap-up 
 </p>
 
+<p> On Day 34, three challenges to be done with this project.  <br>
+  https://www.hackingwithswift.com/books/ios-swiftui/animation-wrap-up
+  <ol> 
+    <li> When you tap the correct flag, make it spin around 360 degrees on the Y axis. </li> 
+    <li> Make the other two buttons fade out to 25% opacity. </li> 
+    <li> And if you tap on the wrong flag? Well, that’s down to you – get creative! </li> 
+  </ol>
+ For the wrong flag, I added the animation of shaking. 
+</p>
+<img src="guessTheFlag.gif" width="250">
+
 <footer> App icon is designed in https://www.canva.com/ and created in https://appicon.co/ </footer> 
